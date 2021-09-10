@@ -1,9 +1,9 @@
 import './App.css';
-import SepticSkeptic from './Components/SepticSkeptic';
+import Website from './Components/Website';
 
 function App() {
   return (
-    <SepticSkeptic />
+    <Website />
   );
 }
 

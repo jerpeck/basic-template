@@ -5,13 +5,13 @@ import Nav from './Nav';
 import Portfolio from './Portfolio';
 
 export default function Landing(props) {
-    const { hero, } = props;
+    const { data, } = props;
 
     return(
         <div>
             <Nav />
-            {<Hero hero={hero} />}
-            <Portfolio />
+            <Hero hero={data.hero} />
+            <Portfolio works={data.works} />
             <Footer />
         </div>
     )

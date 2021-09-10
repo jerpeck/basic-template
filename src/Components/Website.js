@@ -12,17 +12,9 @@ import theme from '../theme';
 import Landing from './Landing';
 import About from './About';
 import Contact from './Contact';
+import ContentPage from './ContentPage';
 
-// const data = {
-//     hero: {
-//         title: 'The Septic Skeptic',
-//         description: 'Licensed, professional septic system inspection, installation, maintenance, and repair for Northern California.'
-//     },
-//     works: [],
-//     aboutDescription: `Septic Skeptic is a family owned and operated company whose primary goal is to provide wastewater system owners effective, low cost solutions.  Our focus is delivering proven drainfield recovery,  treatment pond sludge reduction, and effluent quality management to meet regulatory compliance. The products and services we offer are the highest quality available. Results mean value...we have it and it costs less.\nThrough our industry relationships we are able to offer turnkey projects. From design and engineering to installation and maintenance, we can address wastewater issues in residential, domestic, commercial, agricultural, and municipal settings. Our philosophy is  to create the enhanced relationships between stakeholders that result in successful achievement of all parties needs. Water quality solutions do not have to come with high costs; in our economy it isn't feasible, nor is it necessary.`
-// }
-
-class SepticSkeptic extends Component {
+class Website extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -46,7 +38,7 @@ class SepticSkeptic extends Component {
 
     componentDidMount(){
         this.updateData();
-    }
+    };
 
     render(){
             return(
@@ -55,8 +47,7 @@ class SepticSkeptic extends Component {
                         <Router>
                             <Switch>
                                 <Route exact path="/">
-                                    {this.state.data.hero && <Landing hero={this.state.data.hero} />}
-                                    {/* <Landing hero={this.state.data.hero} /> */}
+                                    {this.state.data.hero && <Landing data={this.state.data} />}
                                 </Route>
                                 <Route exact path="/about" >
                                     <About title="About Us" description={this.state.data.aboutDescription} />
@@ -64,6 +55,9 @@ class SepticSkeptic extends Component {
                                 <Route exact path="/contact">
                                     <Contact />
                                 </Route>
+                                <Route exact path="/services/:id" render={routeProps => (
+                                    this.state.data.works && <ContentPage works={this.state.data.works} {...routeProps} />
+                                )}/>
                             </Switch>
                         </Router>
                     </ThemeProvider>
@@ -72,4 +66,4 @@ class SepticSkeptic extends Component {
         }
     }
 
-export default SepticSkeptic;
+export default Website;

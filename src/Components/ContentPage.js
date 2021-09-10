@@ -13,13 +13,14 @@ const useStyles = makeStyles(() => ({
 }))
 
 export default function ContentPage(props) {
+    const { title, description } = props.works.filter(o => o.id === props.match.params.id)[0];
     const classes = useStyles();
 
     return(
         <OnePage >
             <Paper className={classes.contentPaper}>
-                <Typography variant="h2" >{props.title}</Typography>
-                <Typography variant="subtitle2" >{props.description}</Typography>
+                <Typography variant="h2" >{title}</Typography>
+                <Typography variant="subtitle2" >{description}</Typography>
             </Paper>
         </OnePage >
     )
